@@ -1,3 +1,5 @@
+using AareonTechnicalTest.Data;
+using AareonTechnicalTest.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +24,8 @@ namespace AareonTechnicalTest
         {
 
             services.AddControllers();
+            services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddDbContext<ApplicationContext>(c => c.UseSqlite());
             services.AddSwaggerGen(c =>
             {
